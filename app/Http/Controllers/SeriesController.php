@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
-    public function listarSeries(){
+    public function listarSeries(Request $request){
 
         $series = [
            'Punisher',
@@ -14,14 +14,8 @@ class SeriesController extends Controller
            'Prison Break',
            'Breaking Bad'
         ];
-
-        $html = '<ul>';
-        foreach ($series as $serie){
-            $html .= "<li>$serie</li>";
-        }
-
-        $html .= '</ul>';
-
-        echo $html;
+         //compact retora um array com a variavel de nome series para passar para o frontend
+         //no front end a variavel é utilizada para percorrer o array e listar as series
+        return view('series.index')->with('series', $series);
    }
 }
